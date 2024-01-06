@@ -7,3 +7,8 @@ The search of LotW is vulnerable to SQL injections. The machine that hosts LotW 
 As a trap, we stored a ZIP bomb or virus on the host machine, named 'credit-card-details.zip'.
 
 Optional: A script is watching the ZIP file to be opened. When it's opened, it blocks the IP of the machine that is currently connected to SSH.
+
+Start server
+```bash
+python -m flask --app server run
+```

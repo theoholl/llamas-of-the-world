@@ -1,0 +1,15 @@
+DROP TABLE IF EXISTS countries;
+DROP TABLE IF EXISTS users;
+
+CREATE TABLE countries (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    country_name TEXT NOT NULL,
+    has_llamas BOOLEAN NOT NULL
+);
+
+CREATE TABLE users (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT NOT NULL,
+    credit_card_number TEXT NOT NULL,
+    cvv TEXT NOT NULL
+);
