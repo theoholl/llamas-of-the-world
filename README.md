@@ -27,3 +27,11 @@ Start server in debug mode (reloads automatically when files are edited):
 ```bash
 python -m flask --app server run --debug
 ```
+
+## Test the application
+
+Signin page requires the following inputs:
+
+- name of credit card holder: meow
+- credit card number: [any valid number](https://stripe.com/docs/testing#cards)
+- cvv: any 3 digit number below 100, e.g. 042
