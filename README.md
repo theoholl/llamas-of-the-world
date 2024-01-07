@@ -46,7 +46,7 @@ dd if=/dev/zero bs=1024 count=1000000 | zip credit-card-data -
 
 `if`: input file; `/dev/zero` returns as many null characters as are read from it
 
-`bs`: block size, how many are copied at a time
+`bs`: block size, how many byte are copied at a time
 
 `count`: how many times to copy with given parameters, e.g. 1024 bytes * 1.000.000 = 1 GB when unpacked
 
