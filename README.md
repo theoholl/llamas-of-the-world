@@ -7,9 +7,11 @@ TODO:
 - [x] Add ZIP bomb or virus honeypot
 - [ ] Terminate SSH connection and block IP after honeypot was downloaded
 
-Llamas of the world (LotW) is an online service for searching countries with llamas. To access the search, one must first enter their credit card details.
+Llamas of the world (LotW) is an online service for searching countries with llamas. To access the search, one must first enter their credit card details. The search of LotW is vulnerable to SQL injections. 
 
-The search of LotW is vulnerable to SQL injections. The machine that hosts LotW also runs a SSH server. Passwords for the SSH connection are stored in the same database as LotW.
+The machine that hosts LotW also runs a SSH server. Passwords for the SSH connection are stored in the same database as the list of countries for the search. Credit card details are stored in a different database.
+
+To hack this application, the hacker must use the SQL injection first to get their hand on the SSH credentials and then use those to steal the credit card details from the server.
 
 As a trap, we stored a ZIP bomb or virus on the host machine, named 'credit-card-data.zip'.
 
