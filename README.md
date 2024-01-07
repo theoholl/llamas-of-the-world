@@ -13,6 +13,11 @@ Activate Python virtual environment:
 source .venv/bin/activate
 ```
 
+Initialize the database:
+```bash
+python init_db.py
+```
+
 Start server in debug mode (reloads automatically when files are edited):
 ```bash
 python -m flask --app server run --debug
