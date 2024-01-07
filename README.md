@@ -8,7 +8,12 @@ As a trap, we stored a ZIP bomb or virus on the host machine, named 'credit-card
 
 Optional: A script is watching the ZIP file to be opened. When it's opened, it blocks the IP of the machine that is currently connected to SSH.
 
-Start server
+Activate Python virtual environment:
 ```bash
-python -m flask --app server run
+source .venv/bin/activate
+```
+
+Start server in debug mode (reloads automatically when files are edited):
+```bash
+python -m flask --app server run --debug
 ```
