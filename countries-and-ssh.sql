@@ -1,5 +1,5 @@
 DROP TABLE IF EXISTS countries;
-DROP TABLE IF EXISTS users;
+DROP TABLE IF EXISTS ssh_users;
 
 CREATE TABLE countries (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -7,9 +7,8 @@ CREATE TABLE countries (
     has_llamas BOOLEAN NOT NULL
 );
 
-CREATE TABLE users (
+CREATE TABLE ssh_users (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
-    name TEXT NOT NULL,
-    credit_card_number TEXT NOT NULL,
-    cvv TEXT NOT NULL
+    user_name TEXT NOT NULL,
+    password TEXT NOT NULL
 );

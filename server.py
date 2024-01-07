@@ -4,40 +4,38 @@ from validation import CreditCardValidator as validator
 
 app = Flask(__name__)
 
-# User details
-
-
 @app.route("/", methods=['GET', 'POST'])
 def index():
     if request.method == 'GET':
-        return render_template('user.html')
+        return render_template('credit-card.html')
     else:
-        name = request.form["name"]
-        credit_card_number = request.form["credit_card_number"]
+        cardholder_name = request.form["cardholder_name"]
+        card_number = request.form["card_number"]
         cvv = request.form["cvv"]
 
         try:
-            if (validator.validate_card_number(credit_card_number) and validator.validate_cardholder_name(name) and validator.validate_cvv(cvv)):
-                connection = sqlite3.connect('database.db')
+            if (validator.validate_card_number(card_number) and validator.validate_cardholder_name(cardholder_name) and validator.validate_cvv(cvv)):
+                connection = sqlite3.connect('credit-cards.db')
                 cur = connection.cursor()
-                cur.execute("INSERT INTO users (name, credit_card_number, cvv) VALUES (?, ?, ?)",
-                            (name, credit_card_number, cvv))
+                cur.execute("INSERT INTO credit_cards (cardholder_name, card_number, cvv) VALUES (?, ?, ?)",
+                            (cardholder_name, card_number, cvv))
                 connection.commit()
                 connection.close()
+                return redirect("/llamas-of-the-world")
+            else:
+                return redirect("/")
         except Exception as ex:
             return f"<pre>{ex}</pre>"
 
-        return redirect("/lotwie")
 
-
-@app.route("/lotwie", methods=['GET'])
+@app.route("/llamas-of-the-world", methods=['GET'])
 def lotw():
     country = request.args.get("country")
     has_llamas = None
 
     if country:
         try:
-            connection = sqlite3.connect('database.db')
+            connection = sqlite3.connect('countries-and-ssh.db')
             cur = connection.cursor()
 
             # Vulnerable to SQL injections
@@ -48,4 +46,4 @@ def lotw():
             return f"<pre>{ex}</pre>"
 
     # Return template
-    return render_template('./lotw.html', has_llamas=has_llamas, country=country)
+    return render_template('llamas-of-the-world.html', has_llamas=has_llamas, country=country)
