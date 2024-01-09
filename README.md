@@ -16,19 +16,37 @@ To hack this application, the hacker must use the SQL injection first to get the
 As a trap, we stored a ZIP bomb or virus on the host machine, named 'credit-card-data.zip'.
 
 Activate the Python virtual environment:
+
 ```bash
 source .venv/bin/activate
 ```
 
 Initialize the database. This is only neccessary if you want to reset the current database:
+
 ```bash
 python init_db.py
 ```
 
 Start server in debug mode (reloads automatically when files are edited):
+
 ```bash
 python -m flask --app server run --debug
 ```
+
+## Develop templates with TailwindCSS
+
+First, install the required NPM packages:
+
+```bash
+npm install
+```
+
+Run the following command to start the TailwindCSS compiler and flask server. Both services will watch files for changes and update automatically.
+
+```bash
+npm run dev
+```
+
 
 ## Test the application
 

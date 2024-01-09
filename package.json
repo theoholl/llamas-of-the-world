@@ -1,0 +1,25 @@
+{
+  "name": "llamas-of-the-world",
+  "version": "0.0.1",
+  "description": "TODO:",
+  "main": "index.js",
+  "scripts": {
+    "tailwind": "tailwindcss -i ./tailwind-base.css -o ./static/styles.css --watch",
+    "flask-server": "python -m flask --app server run --debug",
+    "dev": "npm run tailwind & python -m flask --app server run --debug"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/theoholl/llamas-of-the-world.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/theoholl/llamas-of-the-world/issues"
+  },
+  "homepage": "https://github.com/theoholl/llamas-of-the-world#readme",
+  "devDependencies": {
+    "@tailwindcss/forms": "^0.5.7",
+    "tailwindcss": "^3.4.1"
+  }
+}
