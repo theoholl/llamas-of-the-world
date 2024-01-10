@@ -1,12 +1,5 @@
 # llamas-of-the-world
 
-TODO:
-
-- [ ] Add database table for SSH users
-- [ ] Seperate credit card details into different database file
-- [x] Add ZIP bomb or virus honeypot
-- [ ] Terminate SSH connection and block IP after honeypot was downloaded
-
 Llamas of the world (LotW) is an online service for searching countries with llamas. To access the search, one must first enter their credit card details. The search of LotW is vulnerable to SQL injections. 
 
 The machine that hosts LotW also runs a SSH server. Passwords for the SSH connection are stored in the same database as the list of countries for the search. Credit card details are stored in a different database.
@@ -15,46 +8,65 @@ To hack this application, the hacker must use the SQL injection first to get the
 
 As a trap, we stored a ZIP bomb or virus on the host machine, named 'credit-card-data.zip'.
 
+Note: `server.py` as purposefully bad error handling.
+
+Activate the Python virtual environment:
+
+## Installation
+
+Install the software:
+
+```bash
+# Clone git repository
+git clone https://github.com/theoholl/llamas-of-the-world
+cd llamas-of-the-world/
+
+# Install NPM dependencies
+npm i
+
+# Set up and activate python virtual environment
+python -m venv .venv
+source .venv/bin/activate
+
+# Upgrade pip and install requirements
+python -m pip install --upgrade pip
+python -m pip install -r requirements.txt
+```
+
+Optional: Initialize new databases. This is only neccessary if you want to purge the current database. You can do this anytime to erase all data from the databases and start fresh.
+
+```bash
+python init_db.py
+```
+
+## Development
+
 Activate the Python virtual environment:
 
 ```bash
 source .venv/bin/activate
 ```
 
-Initialize the database. This is only neccessary if you want to reset the current database:
+Start development server:
 
 ```bash
-python init_db.py
-```
+# Only flask server (if you don't want to edit the HTML templates)
+# npm run serve
 
-Start server in debug mode (reloads automatically when files are edited):
-
-```bash
-python -m flask --app server run --debug
-```
-
-## Develop templates with TailwindCSS
-
-First, install the required NPM packages:
-
-```bash
-npm install
-```
-
-Run the following command to start the TailwindCSS compiler and flask server. Both services will watch files for changes and update automatically.
-
-```bash
+# Flask server and CSS compiler
 npm run dev
 ```
+
+Now you can edit Python and HTML files without having to restart the server. You only need to refresh the browser. The website will served on [http://localhost:5000](http://localhost:5000).
 
 
 ## Test the application
 
 Signin page requires the following inputs:
 
-- name of credit card holder: meow
-- credit card number: [any valid credit card number](https://stripe.com/docs/testing#cards)
-- cvv: any 3 digit number below 100, e.g. 042
+- Name of credit card holder: meow
+- Credit card number: [any valid credit card number](https://stripe.com/docs/testing#cards), e.g. 6011000990139424
+- CVV: any 3 digit number below 100, e.g. 042
 
 ## Create a ZIP bomb
 
