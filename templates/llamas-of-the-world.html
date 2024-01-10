@@ -1,56 +1,33 @@
 <!DOCTYPE html>
-<html>
+<html class="h-full">
     <head>
         <title>Llamas of the World! | Search</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link href="./static/styles.css" rel="stylesheet" />
-        <style>
-            main {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-            }
-
-            #centerer {
-                width: 300px;
-                margin-top: 140px;
-            }
-
-            form {
-                display: flex;
-                flex-direction: column;
-                gap: 16px;
-            }
-
-            .input-group {
-                display: flex;
-                flex-direction: column;
-            }
-
-            #result {
-                margin-top: 16px;
-                font-style: italic;
-            }
-        </style>
     </head>
-    <body>
-        <main>
-            <div id="centerer">
-                <form action="" method="get">
-                    <div class="input-group">
-                        <label for="country">Enter a country</label>
-                        <input type="text" id="country" name="country"
+    <body class="flex justify-center h-full bg-[url('/static/llama-004.jpg')] bg-center bg-cover">
+        <main class="flex flex-col justify-between items-center h-full w-[500px] pt-6 px-3">
+                <form action="" method="get"
+                    class="w-full relative"
+                >
+                    <input type="text" name="country"
+                        placeholder="Enter a country, e.g. Suriname"
+                        class="block w-full rounded-full border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 pr-12"
                         {% if country is not none %}
                         value="{{ country }}"
                         {% endif %}
-                        />
-                    </div>
-
-                    <button type="submit">Search if your country has llamas</button>
+                    />
+                    <button type="submit"
+                        class="absolute right-0 top-0 h-full px-3 rounded-full"
+                    >
+                        <img src="/static/search-icon.svg">
+                    </button>
                 </form>
 
                 {% if has_llamas is not none %}
-                <div id="result">
+                <div 
+                    data-hasllamas="{{ 'yes' if has_llamas else 'no' }}"
+                    class="w-full mb-8 p-8 rounded data-[hasllamas=yes]:bg-green-500/[.50] data-[hasllamas=no]:bg-red-500/[.50]">
                     {{ country }} has 
                     {% if has_llamas is false %}
                         no
@@ -58,7 +35,6 @@
                     llamas.
                 </div>
                 {% endif %}
-            </div>
         </main>
     </body>
 </html>
