@@ -62,11 +62,19 @@ Now you can edit Python and HTML files without having to restart the server. You
 
 ## Test the application
 
-Signin page requires the following inputs:
+The sign-in page requires the following inputs:
 
 - Name of credit card holder: meow
-- Credit card number: [any valid credit card number](https://stripe.com/docs/testing#cards), e.g. 6011000990139424
+- Credit card number: any valid credit card number e.g. 6011000990139424
 - CVV: any 3 digit number below 100, e.g. 042
+
+Attack the search form with an SQL injection, e.g. by querying all tables in the database:
+
+- [ ] TODO: Create a query string that actually works for an SQL injection
+
+```sql
+SELECT name FROM sqlite_schema WHERE type = 'table' AND name NOT LIKE 'sqlite_%';
+```
 
 ## Create a ZIP bomb
 

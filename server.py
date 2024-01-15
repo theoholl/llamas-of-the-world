@@ -27,7 +27,6 @@ def index():
         except Exception as ex:
             return f"<pre>{ex}</pre>"
 
-
 @app.route("/llamas-of-the-world", methods=['GET'])
 def lotw():
     return render_template('llamas-of-the-world.html')
@@ -46,12 +45,11 @@ def search_for_llamas():
         connection = sqlite3.connect('countries-and-ssh.db')
         db_cursor = connection.cursor()
 
-        # This way of querying the database is vulnerable to SQL injections!!
+        # This query is vulnerable to SQL injections!!!
         result = db_cursor.execute(
             f"SELECT * FROM countries WHERE country_name = '{country}'"
         ).fetchall()
 
-        print(result)
         return result
     
     except Exception as exception:
