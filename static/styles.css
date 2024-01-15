@@ -768,16 +768,16 @@ select {
   margin-bottom: 1.5rem;
 }
 
+.mb-8 {
+  margin-bottom: 2rem;
+}
+
 .mt-1 {
   margin-top: 0.25rem;
 }
 
 .mt-8 {
   margin-top: 2rem;
-}
-
-.mb-8 {
-  margin-bottom: 2rem;
 }
 
 .block {
@@ -808,12 +808,12 @@ select {
   width: 60%;
 }
 
-.w-full {
-  width: 100%;
-}
-
 .w-\[500px\] {
   width: 500px;
+}
+
+.w-full {
+  width: 100%;
 }
 
 .max-w-\[440px\] {
@@ -832,10 +832,6 @@ select {
   flex-direction: column;
 }
 
-.content-between {
-  align-content: space-between;
-}
-
 .items-center {
   align-items: center;
 }
@@ -852,16 +848,16 @@ select {
   gap: 1rem;
 }
 
+.rounded {
+  border-radius: 0.25rem;
+}
+
 .rounded-full {
   border-radius: 9999px;
 }
 
 .rounded-md {
   border-radius: 0.375rem;
-}
-
-.rounded {
-  border-radius: 0.25rem;
 }
 
 .border-gray-300 {
@@ -877,28 +873,6 @@ select {
 .bg-indigo-500 {
   --tw-bg-opacity: 1;
   background-color: rgb(99 102 241 / var(--tw-bg-opacity));
-}
-
-.bg-green-400 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(74 222 128 / var(--tw-bg-opacity));
-}
-
-.bg-green-500 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(34 197 94 / var(--tw-bg-opacity));
-}
-
-.bg-green-500\/\[\.30\] {
-  background-color: rgb(34 197 94 / .30);
-}
-
-.bg-green-500\/\[\.40\] {
-  background-color: rgb(34 197 94 / .40);
-}
-
-.bg-green-500\/\[\.50\] {
-  background-color: rgb(34 197 94 / .50);
 }
 
 .bg-\[url\(\'\/static\/llama-002\.jpg\'\)\] {
@@ -950,8 +924,8 @@ select {
   font-weight: 700;
 }
 
-.italic {
-  font-style: italic;
+.font-medium {
+  font-weight: 500;
 }
 
 .text-gray-600 {
@@ -964,23 +938,10 @@ select {
   color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
-.opacity-30 {
-  opacity: 0.3;
-}
-
-.opacity-80 {
-  opacity: 0.8;
-}
-
 .shadow-sm {
   --tw-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
   --tw-shadow-colored: 0 1px 2px 0 var(--tw-shadow-color);
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
-}
-
-.hover\:bg-green-400:hover {
-  --tw-bg-opacity: 1;
-  background-color: rgb(74 222 128 / var(--tw-bg-opacity));
 }
 
 .hover\:bg-indigo-600:hover {
@@ -1006,19 +967,6 @@ select {
 
 .focus\:ring-opacity-50:focus {
   --tw-ring-opacity: 0.5;
-}
-
-.active\:bg-green-400:active {
-  --tw-bg-opacity: 1;
-  background-color: rgb(74 222 128 / var(--tw-bg-opacity));
-}
-
-.data-\[hasllamas\=yes\]\:bg-green-500\/\[\.50\][data-hasllamas=yes] {
-  background-color: rgb(34 197 94 / .50);
-}
-
-.data-\[hasllamas\=no\]\:bg-red-500\/\[\.50\][data-hasllamas=no] {
-  background-color: rgb(239 68 68 / .50);
 }
 
 @media (min-width: 640px) {

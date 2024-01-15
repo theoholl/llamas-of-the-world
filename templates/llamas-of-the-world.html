@@ -7,15 +7,14 @@
     </head>
     <body class="flex justify-center h-full bg-[url('/static/llama-004.jpg')] bg-center bg-cover">
         <main class="flex flex-col justify-between items-center h-full w-[500px] pt-6 px-3">
-                <form action="" method="get"
-                    class="w-full relative"
-                >
-                    <input type="text" name="country"
+                <form class="w-full relative">
+                    <input
+                        type="text"
+                        id="country-input" 
+                        name="country"
                         placeholder="Enter a country, e.g. Suriname"
+                        autofocus
                         class="block w-full rounded-full border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 pr-12"
-                        {% if country is not none %}
-                        value="{{ country }}"
-                        {% endif %}
                     />
                     <button type="submit"
                         class="absolute right-0 top-0 h-full px-3 rounded-full"
@@ -24,17 +23,46 @@
                     </button>
                 </form>
 
-                {% if has_llamas is not none %}
                 <div 
-                    data-hasllamas="{{ 'yes' if has_llamas else 'no' }}"
-                    class="w-full mb-8 p-8 rounded data-[hasllamas=yes]:bg-green-500/[.50] data-[hasllamas=no]:bg-red-500/[.50]">
-                    {{ country }} has 
-                    {% if has_llamas is false %}
-                        no
-                    {% endif %}
-                    llamas.
+                    id="result-box"
+                    class="w-full mb-8 p-8 rounded hidden font-bold">
                 </div>
-                {% endif %}
         </main>
+
+        <script>
+            const redBackground = 'rgb(239 68 68 / .50)';
+            const greenBackground = 'rgb(34 197 94 / .50)';
+            const purpleBackground = 'rgb(168 85 247 / 0.5)';
+
+            const form = document.getElementsByTagName('form')[0];
+            const searchField = document.getElementById('country-input');
+            const resultBox = document.getElementById('result-box');
+
+            form.addEventListener('submit', (evt) => {
+                searchLlamas();
+                evt.preventDefault();
+            });
+
+            async function searchLlamas() {
+                const countryName = searchField.value;
+
+                try {
+                    const response = await fetch(`/search-for-llamas?country=${countryName}`);
+                    const result = await response.json()
+                    showResults(result[0][2]);
+                } catch (err) {
+                    resultBox.innerHTML = 'Something went wrong ... ¯\\_(ツ)_/¯';
+                    resultBox.style.background = purpleBackground;
+                    resultBox.style.display = 'block';
+                }
+            }
+
+            function showResults(hasLlamas) {
+                const countryName = searchField.value;
+                resultBox.innerHTML = `${countryName} has ${!hasLlamas ? 'no' : ''} llamas.`
+                resultBox.style.background = hasLlamas ? greenBackground : redBackground;
+                resultBox.style.display = 'block';
+            }
+        </script>
     </body>
 </html>

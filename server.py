@@ -1,4 +1,4 @@
-from flask import Flask, request, redirect, render_template
+from flask import Flask, request, redirect, render_template, Response
 import sqlite3
 from validation import CreditCardValidator as validator
 
@@ -30,20 +30,29 @@ def index():
 
 @app.route("/llamas-of-the-world", methods=['GET'])
 def lotw():
+    return render_template('llamas-of-the-world.html')
+
+@app.route("/search-for-llamas", methods=['GET'])
+def search_for_llamas():
     country = request.args.get("country")
-    has_llamas = None
+    if country is None:
+        return Response(
+            "{'Error': 'Query parameter \'country\' missing.'}", 
+            status=400, 
+            mimetype='application/json'
+        )
+    
+    try:
+        connection = sqlite3.connect('countries-and-ssh.db')
+        db_cursor = connection.cursor()
 
-    if country:
-        try:
-            connection = sqlite3.connect('countries-and-ssh.db')
-            cur = connection.cursor()
+        # This way of querying the database is vulnerable to SQL injections!!
+        result = db_cursor.execute(
+            f"SELECT * FROM countries WHERE country_name = '{country}'"
+        ).fetchall()
 
-            # Vulnerable to SQL injections
-            result = cur.execute(
-                f"SELECT * FROM countries WHERE country_name = '{country}'").fetchall()
-            has_llamas = bool(result[0][2])
-        except Exception as ex:
-            return f"<pre>{ex}</pre>"
-
-    # Return template
-    return render_template('llamas-of-the-world.html', has_llamas=has_llamas, country=country)
+        print(result)
+        return result
+    
+    except Exception as exception:
+        return exception
