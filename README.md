@@ -90,4 +90,3 @@ dd if=/dev/zero bs=1024 count=1000000 | zip credit-card-data -
 `count`: how many times to copy with given parameters, e.g. 1024 bytes * 1.000.000 = 1 GB when unpacked
 
 `-`: file name of the packed file in the zip archive
-
