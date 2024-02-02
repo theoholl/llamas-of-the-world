@@ -30,7 +30,7 @@ class CreditCardValidator:
 
     def validate_cardholder_name(name: str) -> bool:
         """This function validates a cardholder name."""
-        if "meow" not in name:
+        if len(name) < 1 or len(name) > 30:
             return False
         return True
 
