@@ -64,7 +64,7 @@ Now you can edit Python and HTML files without having to restart the server. You
 
 The sign-in page requires the following inputs:
 
-- Name of credit card holder: meow
+- Name of credit card holder
 - Credit card number: any valid credit card number e.g. 6011000990139424
 - CVV: any 3 digit number below 100, e.g. 042
 
