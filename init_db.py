@@ -14,6 +14,7 @@ def initialize_countries_and_ssh_db():
             cur.execute("INSERT INTO countries (country_name, has_llamas) VALUES (?, ?)", (country.strip(), has_llamas))
 
     cur.execute("INSERT INTO countries (country_name, has_llamas) VALUES (?, ?)", ("Llamaland", False))
+    cur.execute("INSERT INTO ssh_users (user_name, password) VALUES (?, ?)", ("user", "pw"))
 
     connections.commit()
     connections.close()
