@@ -59,7 +59,6 @@ npm run dev
 
 Now you can edit Python and HTML files without having to restart the server. You only need to refresh the browser. The website will served on [http://localhost:5000](http://localhost:5000).
 
-
 ## Test the application
 
 The sign-in page requires the following inputs:
@@ -73,6 +72,18 @@ Attack the search form with an SQL injection, e.g. by querying all tables in the
 
 ```sql
 Llamaland' UNION SELECT type, name, name FROM sqlite_schema WHERE type = 'table' AND name NOT LIKE 'sqlite_%
+```
+
+**SSH user:**
+
+- username: user
+- password: pw
+
+
+## Expose server to network
+
+```bash
+python -m flask --app server run --host=0.0.0.0
 ```
 
 ## Create a ZIP bomb
