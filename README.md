@@ -10,7 +10,8 @@ As a trap, we stored a ZIP bomb or virus on the host machine, named 'credit-card
 
 Note: `server.py` as purposefully bad error handling.
 
-Activate the Python virtual environment:
+![Screenshot of credit card screen](/mockups/Signup%20-%20desktop.jpg)
+
 
 ## Installation
 
