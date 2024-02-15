@@ -1,4 +1,4 @@
-# llamas-of-the-world
+# Uni project: Llamas of the World
 
 Llamas of the world (LotW) is an online service for searching countries with llamas. To access the search, one must first enter their credit card details. The search of LotW is vulnerable to SQL injections. 
 
