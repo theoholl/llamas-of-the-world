@@ -8,7 +8,7 @@ To hack this application, the hacker must use the SQL injection first to get the
 
 As a trap, we stored a ZIP bomb or virus on the host machine, named 'credit-card-data.zip'.
 
-Note: `server.py` as purposefully bad error handling.
+Note: `server.py` has purposefully bad error handling.
 
 ![Screenshot of credit card screen](/mockups/Signup%20-%20desktop.jpg)
 
